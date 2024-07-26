@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .maximum-width {
+    @apply max-w-[1200px] mx-auto px-4;
+  }
+
+  .app-text {
+    @apply text-[#656D72] dark:text-[#a0a8ad];
+  }
+
+  .title-text {
+    @apply text-dark dark:text-light;
+  }
+}
