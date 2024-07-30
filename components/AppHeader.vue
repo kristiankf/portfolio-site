@@ -2,18 +2,18 @@
     <nav class="sticky top-0 z-50 dark:bg-dark bg-light shadow-sm transition-colors duration-500">
         <div class="maximum-width title-text flex justify-between items-center py-4">
             <!-- logo -->
-            <div class="">
+            <NuxtLink href="/" class="">
                 <img src="/images/logo-white.png" alt="" class="max-w-[80px]" v-if="themeStore.theme === 'dark'" />
                 <img src="/images/logo-black.png" alt="" class="max-w-[80px]" v-else />
-            </div>
+            </NuxtLink>
 
             <!-- links -->
             <div class="flex justify-between items-center gap-5 ">
-                <Nuxt-Link to="#about-me">About Me</Nuxt-Link>
-                <Nuxt-Link to="#edu-skills">Education & Skills</Nuxt-Link>
-                <Nuxt-Link to="#career">Career</Nuxt-Link>
-                <Nuxt-Link to="#portfolio">Portfolio</Nuxt-Link>
-                <Nuxt-Link to="#contact-me">Contact Me</Nuxt-Link>
+                <template v-for="link in links" :key="link.idLink">
+                    <NuxtLink :href="`#${link.idLink}`" mb-a mt-a text-xl>
+                        {{ link.name }}
+                    </NuxtLink>
+                </template>
             </div>
 
             <!-- theme and cv -->
@@ -27,6 +27,14 @@
 
 <script setup>
 const themeStore = useThemeStore()
+
+const links = [
+    { name: 'About Me', idLink: 'about-me' },
+    { name: 'Education & Skills', idLink: 'edu-skills' },
+    { name: 'Career', idLink: 'career' },
+    { name: 'Portfolio', idLink: 'portfolio' },
+    { name: 'Contact Me', idLink: 'contact-me' },
+]
 </script>
 
 <style scoped>
