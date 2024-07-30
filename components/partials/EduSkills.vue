@@ -25,9 +25,9 @@
                         <div class="w-[2px] h-full dark:bg-light bg-dark"></div>
                     </div>
                     <div class="edu pb-10">
-                        <p class="title-text font-bold">University of Ghana</p>
-                        <p class="text-sm mb-4 mt-1">Bachelor's degree - Computer Science</p>
-                        <p class="text-sm">2016 - 2020</p>
+                        <p class="title-text font-bold">Certificate</p>
+                        <p class="text-sm mb-4 mt-1">Certified SAFe® 6 DevOps Practitioner</p>
+                        <p class="text-sm">March 2023</p>
                     </div>
                 </div>
                 <div class="flex gap-4">
@@ -37,9 +37,9 @@
                         <div class="size-[14px] shrink-0 dark:bg-light bg-dark rounded-full"></div> -->
                     </div>
                     <div class="edu pb-10">
-                        <p class="title-text font-bold">University of Ghana</p>
-                        <p class="text-sm mb-4 mt-1">Bachelor's degree - Computer Science</p>
-                        <p class="text-sm">2016 - 2020</p>
+                        <p class="title-text font-bold">Certificate</p>
+                        <p class="text-sm mb-4 mt-1">Professional Scrum Master I</p>
+                        <p class="text-sm">May 2024</p>
                     </div>
                 </div>
             </div>

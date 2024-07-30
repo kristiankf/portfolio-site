@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    "@nuxt/icon"
+    "@nuxt/icon",
+    "vue3-carousel-nuxt"
   ],
 
     // App meta

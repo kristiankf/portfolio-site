@@ -11,5 +11,13 @@
         <section class="py-36">
             <PartialsCareer />
         </section>
+
+        <section class="py-36 alt-bg">
+            <PartialsPortfolio />
+        </section>
+
+        <section class="py-36">
+            <PartialsContact />
+        </section>
     </div>
 </template>

@@ -27,8 +27,9 @@
         </div>
         <div class="w-1/2">
             <div class="relative aspect-[4/5] max-w-[300px] mx-auto">
-                <div class=" rounded-lg overflow-hidden size-full relative z-10">
-                    <img src="/assets/images/image.png" alt="my image" class="size-full object-cover ">
+                <div
+                    class=" rounded-2xl overflow-hidden size-full relative z-10 bg-[url('/images/img-bg.png')] bg-cover bg-no-repeat">
+                    <img src="/images/christian-min.png" alt="my image" class="full absolute bottom-0 -left-3">
                 </div>
                 <div class="absolute bg-primary rounded-lg top-0 left-0 right-0 bottom-0  -rotate-12"></div>
             </div>
