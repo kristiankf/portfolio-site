@@ -1,6 +1,6 @@
 <template>
     <div class="rounded-lg overflow-hidden bg-white dark:bg-black w-[500px] transition-colors duration-500 title-text">
-        <div class="w-full aspect-square relative group">
+        <div class="w-full aspect-[9/7] relative group">
             <img :src="content.image" :alt="content.name" class="size-full object-cover object-center">
             <div class="absolute top-0 bottom-0 left-0 right-0 bg-black/20 dark:bg-black/40"></div>
         </div>
