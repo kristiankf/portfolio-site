@@ -1,7 +1,17 @@
 <template>
-  <div class="dark:bg-dark bg-light app-text font-inter">
-    <AppHeader />
-    <NuxtPage />
-    <AppFooter />
+  <div :class="{ dark: themeStore.theme === 'dark' }" class="">
+    <div class="dark:bg-dark bg-light app-text font-inter transition-colors duration-500">
+      <AppHeader />
+      <NuxtPage />
+      <AppFooter />
+    </div>
   </div>
 </template>
+
+<script setup>
+const themeStore = useThemeStore()
+
+onMounted(() => {
+  themeStore.switchTheme(themeStore.selectedTheme)
+})
+</script>

@@ -8,10 +8,22 @@
   }
 
   .app-text {
-    @apply text-[#656D72] dark:text-[#a0a8ad];
+    @apply text-[#656D72] dark:text-[#a0a8ad] transition-colors duration-500;
   }
 
   .title-text {
-    @apply text-dark dark:text-light;
+    @apply text-dark dark:text-light transition-colors duration-500;
+  }
+
+  .theme-border {
+    @apply border-[#a0a8ad] dark:border-[#656D72] hover:border-dark dark:hover:border-light hover:transition-colors hover:duration-500;
+  }
+
+  .title-style {
+    @apply title-text font-jakarta text-3xl font-semibold;
+  }
+
+  .alt-bg {
+    @apply dark:bg-[#252525] bg-[#e8e8e8]  transition-colors duration-500;
   }
 }
