@@ -10,8 +10,9 @@
             <!-- links -->
             <div class="flex justify-between items-center gap-5 ">
                 <template v-for="link in links" :key="link.idLink">
-                    <NuxtLink :href="`#${link.idLink}`" mb-a mt-a text-xl>
+                    <NuxtLink :href="`#${link.idLink}`" :class="{ '!text-primary': hash === (`#${link.idLink}`) }">
                         {{ link.name }}
+                        <!-- {{ route.hash }} -->
                     </NuxtLink>
                 </template>
             </div>
@@ -19,7 +20,10 @@
             <!-- theme and cv -->
             <div class="flex justify-between items-center gap-5">
                 <UiThemeIcon />
-                <button class="rounded-md px-5  py-2 border theme-border" type="button">Resume</button>
+                <a href="/cv/AMOAKOHENE-CHRISTIAN-CV.pdf" target="_blank">
+                    <button class="rounded-md px-5  py-2 border theme-border" type="button">Resume
+                    </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -27,6 +31,8 @@
 
 <script setup>
 const themeStore = useThemeStore()
+const hash = ref('')
+const route = useRoute()
 
 const links = [
     { name: 'About Me', idLink: 'about-me' },
@@ -35,10 +41,14 @@ const links = [
     { name: 'Portfolio', idLink: 'portfolio' },
     { name: 'Contact Me', idLink: 'contact-me' },
 ]
+
+watch(() => route.hash, (newRoute) => {
+    hash.value = newRoute
+})
+
+onMounted(() => {
+    hash.value = route.hash
+})
 </script>
 
-<style scoped>
-.router-link-exact-active {
-    @apply text-primary
-}
-</style>
+<style scoped></style>
