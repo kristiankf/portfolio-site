@@ -50,7 +50,9 @@
                     </div>
                     <div class="">
                         <p class="title-text mb-1">Phone</p>
-                        <p class="text-sm"><a href="tel:+233208232081">+233 208 232 081</a></p>
+                        <p class="text-sm"><a href="tel:+233208232081" class="hover:text-primary transition-colors">+233
+                                208 232 081</a>
+                        </p>
                     </div>
                 </div>
 
@@ -61,7 +63,8 @@
                     </div>
                     <div class="">
                         <p class="title-text mb-1">Email</p>
-                        <p class="text-sm"><a href="mailto:camoakohene84@gmail.com">camoakohene84@gmail.com</a></p>
+                        <p class="text-sm"><a href="mailto:camoakohene84@gmail.com"
+                                class="hover:text-primary transition-colors">camoakohene84@gmail.com</a></p>
                     </div>
                 </div>
             </div>

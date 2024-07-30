@@ -3,8 +3,8 @@
         <div class="maximum-width title-text flex justify-between items-center py-4">
             <!-- logo -->
             <NuxtLink href="/" class="">
-                <img src="/images/logo-white.png" alt="" class="max-w-[80px]" v-if="themeStore.theme === 'dark'" />
-                <img src="/images/logo-black.png" alt="" class="max-w-[80px]" v-else />
+                <img src="/images/logo-white.png" alt="" class="max-w-[80px]" v-show="themeStore.theme === 'dark'" />
+                <img src="/images/logo-black.png" alt="" class="max-w-[80px]" v-show="themeStore.theme === 'light'" />
             </NuxtLink>
 
             <!-- links -->
