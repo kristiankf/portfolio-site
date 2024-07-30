@@ -9,11 +9,11 @@
 
             <!-- links -->
             <div class="flex justify-between items-center gap-5 ">
-                <div>About Me</div>
-                <div>Education & Skills</div>
-                <div>Career</div>
-                <div>Portfolio</div>
-                <div>Contact Me</div>
+                <Nuxt-Link to="#about-me">About Me</Nuxt-Link>
+                <Nuxt-Link to="#edu-skills">Education & Skills</Nuxt-Link>
+                <Nuxt-Link to="#career">Career</Nuxt-Link>
+                <Nuxt-Link to="#portfolio">Portfolio</Nuxt-Link>
+                <Nuxt-Link to="#contact-me">Contact Me</Nuxt-Link>
             </div>
 
             <!-- theme and cv -->
@@ -30,7 +30,7 @@ const themeStore = useThemeStore()
 </script>
 
 <style scoped>
-/* .router-link-exact-active {
-    @apply text-mam-500
-} */
+.router-link-exact-active {
+    @apply text-primary
+}
 </style>
