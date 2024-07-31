@@ -1,7 +1,7 @@
 <template>
-    <div class="maximum-width flex gap-20 items-center">
-        <div class="w-1/2">
-            <form @submit.prevent="submitForm" class="space-y-4 title-text">
+    <div class="maximum-width flex flex-col-reverse sm:flex-row gap-10 md:gap-20 sm:items-center">
+        <div class="sm:w-1/2">
+            <form @submit.prevent="submitForm" class="mt-10 sm:mt-0 space-y-4 title-text w-full">
                 <!-- name -->
                 <div class="">
                     <input type="text" class="w-full rounded-lg p-4 alt-bg" placeholder="Name" v-model="form.name"
@@ -30,8 +30,8 @@
                 </div>
             </form>
         </div>
-        <div class="w-1/2">
-            <div class="space-y-14">
+        <div class="sm:w-1/2">
+            <div class="space-y-8 sm:space-y-14">
                 <!-- address -->
                 <div class="flex gap-4 items-center">
                     <div class="  dark:bg-[#EAE6FE] bg-[#e5e0fa]  rounded-2xl p-4 flex items-center justify-center">

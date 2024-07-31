@@ -92,6 +92,7 @@ watch(currentSlide, () => {
     padding-block: 15px;
     padding-inline: 15px;
     text-align: left;
+    align-items: stretch;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,6 +1,6 @@
 <template>
-    <div class="flex gap-20 maximum-width">
-        <div class="w-[300px] shrink-0">
+    <div class="flex flex-col md:flex-row gap-5 lg:gap-20 maximum-width">
+        <div class="md:w-[300px] shrink-0">
             <div class="">
                 <UiSexyTitle>
                     career path
@@ -9,17 +9,21 @@
                 <h2 class="title-style mt-4">Work Experience</h2>
             </div>
 
-            <div class="mt-10">
-                <ul class="space-y-2 title-text">
-                    <template v-for="career in careers" :key="career.slug">
-                        <li class="py-3 px-5 flex justify-between items-center rounded-md hover:alt-bg cursor-pointer"
-                            @click="selected = career.slug"
-                            :class="{ 'text-primary alt-bg': selected === career.slug }">
-                            <span class="">{{ career.name }}</span>
-                            <Icon name="heroicons:chevron-right" v-if="selected === career.slug" />
-                        </li>
-                    </template>
-                </ul>
+            <div class="mt-10 w-full">
+                <div class="overflow-x-scroll w-full pb-4">
+                    <ul class="md:space-y-2 title-text flex md:block gap-1 w-full">
+                        <template v-for="career in careers" :key="career.slug">
+                            <li class="text-sm md:text-base py-2 md:py-3 px-3 md:px-5 flex shrink-0 justify-between items-center rounded-md hover:alt-bg cursor-pointer"
+                                @click="selected = career.slug"
+                                :class="{ 'text-primary alt-bg': selected === career.slug }">
+                                <span class="">{{ career.name }}</span>
+                                <Icon name="heroicons:chevron-right" v-if="selected === career.slug"
+                                    class="hidden md:block" />
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+
             </div>
         </div>
 

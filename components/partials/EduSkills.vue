@@ -6,8 +6,8 @@
 
         <h2 class="title-style mt-4">Education & Skills</h2>
 
-        <div class="mt-20 flex gap-20">
-            <div class="w-[500px]">
+        <div class="mt-10 md:mt-20 flex flex-col sm:flex-row gap-5 lg:gap-20 ">
+            <div class="sm:w-[500px]">
                 <div class="flex gap-4">
                     <div class="line flex flex-col items-center justify-center">
                         <div class="size-[14px] shrink-0 dark:bg-light bg-dark rounded-full"></div>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-[600px]">
+            <div class="sm:w-[600px]">
                 <p class="leading-8">
                     For {{ yearsOfExperience() }}+ years, I have been continuously learning in the field of front-end
                     and experimenting with new
@@ -51,7 +51,7 @@
                 </p>
 
                 <!-- skills -->
-                <div class="flex flex-wrap gap-4 mt-10">
+                <div class="flex flex-wrap gap-2 md:gap-4 mt-5 md:mt-10">
                     <template v-for="item in skills" :key="item.skill">
                         <div class="flex  border theme-border p-3 px-4 rounded-full items-center gap-2">
                             <Icon :name="item.logo" class="text-xl" /> <span class="text-sm font-semibold">{{ item.skill

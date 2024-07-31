@@ -5,8 +5,8 @@
             <div class="absolute top-0 bottom-0 left-0 right-0 bg-black/20 dark:bg-black/40"></div>
         </div>
 
-        <div class="p-5">
-            <p>{{ content.name }}</p>
+        <div class="p-3 sm:p-5">
+            <p class="text-sm md:text-base">{{ content.name }}</p>
             <div class="flex gap-3 items-center mt-4">
                 <span class="border text-xs theme-border px-2 py-0.5 rounded-[4px]">{{ content.techStack }}</span>
                 <a :href="content.link" target="_blank" class="flex items-center">
