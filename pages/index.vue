@@ -25,36 +25,36 @@
 <script setup>
 const config = useRuntimeConfig()
 const apiBaseUrl = config.public.apiBaseUrl
-try {
-    const [educationRes, skillsRes, experienceRes, projectsRes] = await Promise.all([
-        useFetch(`${apiBaseUrl}/education/`, { key: 'education' }),
-        useFetch(`${apiBaseUrl}/skills/`, { key: 'skills' }),
-        useFetch(`${apiBaseUrl}/experience/`, { key: 'experience' }),
-        useFetch(`${apiBaseUrl}/projects/`, { key: 'projects' }),
-    ])
+// try {
+const [educationRes, skillsRes, experienceRes, projectsRes] = await Promise.all([
+    useFetch(`${apiBaseUrl}/education/`, { key: 'education' }),
+    useFetch(`${apiBaseUrl}/skills/`, { key: 'skills' }),
+    useFetch(`${apiBaseUrl}/experience/`, { key: 'experience' }),
+    useFetch(`${apiBaseUrl}/projects/`, { key: 'projects' }),
+])
 
-    // Check if any individual fetch failed
-    if (
-        educationRes.error.value ||
-        skillsRes.error.value ||
-        experienceRes.error.value ||
-        projectsRes.error.value
-    ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: 'Failed to load portfolio data. Please try again later.'
-        })
-    }
-
-    // Continue using: educationRes.data, etc.
-
-} catch (err) {
-    // Optional: re-throw to trigger Nuxt error layout
+// Check if any individual fetch failed
+if (
+    educationRes.error.value ||
+    skillsRes.error.value ||
+    experienceRes.error.value ||
+    projectsRes.error.value
+) {
     throw createError({
-        statusCode: err.statusCode || 500,
-        statusMessage: err.statusMessage || 'Unexpected error occurred.'
+        statusCode: 500,
+        statusMessage: 'Failed to load portfolio data. Please try again later.'
     })
 }
+
+// Continue using: educationRes.data, etc.
+
+// } catch (err) {
+//     // Optional: re-throw to trigger Nuxt error layout
+//     throw createError({
+//         statusCode: err.statusCode || 500,
+//         statusMessage: err.statusMessage || 'Unexpected error occurred.'
+//     })
+// }
 
 console.log(educationRes.data.value)
 console.log(skillsRes.data.value)

@@ -67,7 +67,7 @@ const getErrorTitle = (statusCode) => {
 
                     <!-- Error Message -->
                     <p class="app-text text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-                        {{ getErrorMessage(error?.statusCode) }}
+                        {{ error?.statusMessage || 'An unexpected error occurred. Please try again.' }}
                     </p>
 
                     <!-- Action Buttons -->
