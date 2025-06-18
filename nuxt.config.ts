@@ -52,9 +52,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       web3formsAccessKey: process.env.NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-      apiBaseUrl:
-        process.env.NUXT_PUBLIC_API_BASE_URL ||
-        "https://portfolio-api-a42j.onrender.com/api",
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
     },
   },
 });
