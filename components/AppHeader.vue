@@ -22,7 +22,8 @@
             <!-- theme and cv -->
             <div class="flex justify-between items-center gap-5">
                 <UiThemeIcon />
-                <a href="/cv/AMOAKOHENE-CHRISTIAN-CV.pdf" target="_blank" class="md:block hidden">
+                <a href="https://drive.google.com/file/d/1gV4msDEQodcvqLnx_O7dxrwAEWEmJfe_/view?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="md:block hidden">
                     <button class="rounded-md px-5  py-2 border theme-border active:scale-90 transition-transform"
                         type="button">Resume
                     </button>

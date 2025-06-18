@@ -24,7 +24,8 @@
                     </template>
                 </ul>
                 <div class="w-fit mx-auto pt-10">
-                    <a href="/cv/AMOAKOHENE-CHRISTIAN-CV.pdf" target="_blank" class="">
+                    <a href="https://drive.google.com/file/d/1gV4msDEQodcvqLnx_O7dxrwAEWEmJfe_/view?usp=sharing"
+                        target="_blank" rel="noopener noreferrer" class="">
                         <button class="rounded-md px-5  py-2 border theme-border" type="button">Resume
                         </button>
                     </a>

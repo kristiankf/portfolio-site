@@ -23,7 +23,7 @@
             <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true" snapAlign="start"
                 :transition="500" :autoplay="3000" :pauseAutoplayOnHover="true" v-model="currentSlide">
                 <template #slides>
-                    <Slide v-for="portfolio in portfolioData" :key="portfolio?.name" class="">
+                    <Slide v-for="portfolio in projects" :key="portfolio?.id" class="">
                         <UiPortfolioCard :content="portfolio" />
                     </Slide>
 
@@ -37,6 +37,15 @@
 </template>
 
 <script setup>
+const props = defineProps({
+    projects: {
+        type: Array,
+        required: true,
+    },
+})
+
+console.log(props.projects)
+
 const portfolioData = [
     { name: 'Nnuro', image: '/images/portfolio/nnuro.png', link: 'https://nnuro.com/', techStack: 'Vue' },
     { name: 'Modern Auto Motors', image: '/images/portfolio/mam.png', link: 'https://mam.co.bw/', techStack: 'Nuxt' },
