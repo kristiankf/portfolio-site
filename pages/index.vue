@@ -25,7 +25,6 @@
 <script setup>
 const config = useRuntimeConfig()
 const apiBaseUrl = config.public.apiBaseUrl
-// try {
 const [educationRes, skillsRes, experienceRes, projectsRes] = await Promise.all([
     useFetch(`${apiBaseUrl}/education/`, { key: 'education' }),
     useFetch(`${apiBaseUrl}/skills/`, { key: 'skills' }),
@@ -46,18 +45,8 @@ if (
     })
 }
 
-// Continue using: educationRes.data, etc.
-
-// } catch (err) {
-//     // Optional: re-throw to trigger Nuxt error layout
-//     throw createError({
-//         statusCode: err.statusCode || 500,
-//         statusMessage: err.statusMessage || 'Unexpected error occurred.'
-//     })
-// }
-
-console.log(educationRes.data.value)
-console.log(skillsRes.data.value)
-console.log(experienceRes.data.value)
-console.log(projectsRes.data.value)
+// console.log(educationRes.data.value)
+// console.log(skillsRes.data.value)
+// console.log(experienceRes.data.value)
+// console.log(projectsRes.data.value)
 </script>

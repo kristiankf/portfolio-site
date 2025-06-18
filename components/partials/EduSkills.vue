@@ -39,7 +39,7 @@
                         <div class="flex  border theme-border p-3 px-4 rounded-full items-center gap-2">
                             <Icon :name="item.icon_name" class="text-xl" /> <span class="text-sm font-semibold">{{
                                 item?.name
-                                }}</span>
+                            }}</span>
                         </div>
                     </template>
                 </div>
@@ -60,8 +60,8 @@ const props = defineProps({
     },
 })
 
-console.log(props.skills)
-console.log(props.education)
+// console.log(props.skills)
+// console.log(props.education)
 
 // const skills = [
 //     { skill: "Tailwind CSS", logo: "logos:tailwindcss-icon" },

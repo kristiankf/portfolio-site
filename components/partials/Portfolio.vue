@@ -44,7 +44,7 @@ const props = defineProps({
     },
 })
 
-console.log(props.projects)
+// console.log(props.projects)
 
 const portfolioData = [
     { name: 'Nnuro', image: '/images/portfolio/nnuro.png', link: 'https://nnuro.com/', techStack: 'Vue' },

@@ -63,7 +63,7 @@ const props = defineProps({
     },
 })
 
-console.log(props.experience)
+// console.log(props.experience)
 
 const selected = ref(props.experience[0].company_name)
 
