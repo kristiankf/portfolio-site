@@ -5,15 +5,21 @@
         </section>
 
         <section class="py-20 md:py-36 alt-bg" id="edu-skills">
-            <PartialsEduSkills :skills="skillsRes.data.value" :education="educationRes.data.value" />
+            <PartialsEduSkillsSkeleton
+                v-if="skillsRes.status.value === 'pending' || educationRes.status.value === 'pending' || skillsRes.status.value === 'idle' || educationRes.status.value === 'idle'" />
+            <PartialsEduSkills v-else :skills="skillsRes.data.value" :education="educationRes.data.value" />
         </section>
 
         <section class="py-20 md:py-36" id="career">
-            <PartialsCareer :experience="experienceRes.data.value" />
+            <PartialsCareerSkeleton
+                v-if="experienceRes.status.value === 'pending' || experienceRes.status.value === 'idle'" />
+            <PartialsCareer v-else :experience="experienceRes.data.value" />
         </section>
 
         <section class="py-20 md:py-36 alt-bg" id="portfolio">
-            <PartialsPortfolio :projects="projectsRes.data.value" />
+            <PartialsPortfolioSkeleton
+                v-if="projectsRes.status.value === 'pending' || projectsRes.status.value === 'idle'" />
+            <PartialsPortfolio v-else :projects="projectsRes.data.value" />
         </section>
 
         <section class="py-20 md:py-36" id="contact-me">
@@ -26,10 +32,10 @@
 const config = useRuntimeConfig()
 const apiBaseUrl = config.public.apiBaseUrl
 const [educationRes, skillsRes, experienceRes, projectsRes] = await Promise.all([
-    useFetch(`${apiBaseUrl}/education/`, { key: 'education' }),
-    useFetch(`${apiBaseUrl}/skills/`, { key: 'skills' }),
-    useFetch(`${apiBaseUrl}/experience/`, { key: 'experience' }),
-    useFetch(`${apiBaseUrl}/projects/`, { key: 'projects' }),
+    useFetch(`${apiBaseUrl}/education/`, { key: 'education', lazy: true, }),
+    useFetch(`${apiBaseUrl}/skills/`, { key: 'skills', lazy: true }),
+    useFetch(`${apiBaseUrl}/experience/`, { key: 'experience', lazy: true }),
+    useFetch(`${apiBaseUrl}/projects/`, { key: 'projects', lazy: true }),
 ])
 
 // Check if any individual fetch failed
