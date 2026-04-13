@@ -19,13 +19,28 @@
                     <div class="absolute bg-primary rounded-lg top-0 left-0 right-0 bottom-0  -rotate-12"></div>
                 </div>
 
-                <p class="leading-8">
-                    I am a frontend web developer with {{ yearsOfExperience() }}+ years of experience in crafting
-                    dynamic and responsive
-                    websites and web apps. Skilled in using frameworks like Vue.js, React.js, and Angular, I focus on
-                    delivering high-quality, user-friendly interfaces while staying at the cutting edge of industry
-                    trends.
-                </p>
+                <div class="leading-8 space-y-2">
+                    <p class="">
+                        I am a Full Stack Software Engineer with {{ yearsOfExperience() }}+ years of experience building
+                        solutions that help
+                        businesses grow and operate more efficiently. I design and develop web applications that solve
+                        real
+                        problems, improve workflows, and enhance user experience.
+                    </p>
+
+                    <p class="">
+                        I focus on creating reliable, scalable systems that not only meet user needs but also support
+                        business goals. From idea to deployment, I enjoy turning concepts into practical products that
+                        deliver value.
+                    </p>
+
+                    <p class="">
+                        I am committed to writing clean, maintainable solutions and continuously improving to provide
+                        better
+                        results for the people and organizations I work with.
+                    </p>
+
+                </div>
                 <p class="flex gap-4 items-center w-fit mx-auto md:mx-0">
                     <a href="https://github.com/kristiankf" target="_blank" rel="noopener noreferrer">
                         <Icon name="hugeicons:github" class="text-2xl hover:text-primary transition-colors" />
