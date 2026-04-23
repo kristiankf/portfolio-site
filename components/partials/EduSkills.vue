@@ -28,7 +28,9 @@
             </div>
             <div class="sm:w-[600px]">
                 <p class="leading-8">
-                    For {{ yearsOfExperience() }}+ years, I have been continuously learning in the field of front-end
+                    For {{ yearsOfExperience() }}+ years, I have been continuously practicing and building in the field
+                    of full
+                    stack development
                     and experimenting with new
                     technologies and frameworks, and here you can see a summary of my skills.
                 </p>

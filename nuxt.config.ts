@@ -17,17 +17,17 @@ export default defineNuxtConfig({
   // App meta
   app: {
     head: {
-      title: "Kris Wale - Front-end Dev",
+      title: "Kris Wale - Software Engineer",
       meta: [
         {
           name: "description",
           content:
-            "Creative front-end developer with more than +3 years of experience in enterprise companies and startups. Proficient in Html, Tailwind Css, Javascript, Vue, React and Angular. Passionate about UI/UX",
+            "Software engineer with an expertise in full stack development, specializing in building scalable and efficient web applications.",
         },
         {
           name: "keywords",
           content:
-            "Front-end, Web Development, Software Engineering, React, Vue, Javascript, Angular, CSS, HTML",
+            "Full Stack, Web Development, Software Engineering, React, Vue, Javascript, Django, Python, MongoDB, MySQL, PostgreSQL, Docker, Kubernetes, AWS, Azure, GCP",
         },
       ],
       link: [
