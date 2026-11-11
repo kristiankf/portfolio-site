@@ -17,7 +17,7 @@
                         <NuxtLink to="/solutions" class="button-primary">Explore solutions & work
                             <Icon name="hugeicons:arrow-up-right-01" />
                         </NuxtLink>
-                        <NuxtLink to="/contact" class="button-secondary home-hero-secondary">Let’s map your workflow
+                        <NuxtLink to="/contact" class="button-secondary home-hero-secondary">Let's map your workflow
                         </NuxtLink>
                     </div>
 

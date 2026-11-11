@@ -5,7 +5,8 @@
                 <UiSexyTitle>CLIENTS & TEAMS</UiSexyTitle>
                 <h2 class="title-style mt-4 text-2xl sm:text-3xl">Good work is built together.</h2>
             </div>
-            <p class="max-w-sm leading-7 app-text">A few of the teams and businesses I’ve had the pleasure of working with.</p>
+            <p class="max-w-sm leading-7 app-text">A few of the teams and businesses I've had the pleasure of working
+                with.</p>
         </div>
 
         <div class="client-marquee-window" role="region" aria-label="Clients and teams">

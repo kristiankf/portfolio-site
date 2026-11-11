@@ -4,20 +4,20 @@
             <form @submit.prevent="submitForm" class="mt-10 sm:mt-0 space-y-4 title-text w-full">
                 <!-- name -->
                 <div class="">
-                    <input type="text" name="name" aria-label="Your name" class="w-full rounded-lg p-4 alt-bg" placeholder="Name" v-model="form.name"
-                        required>
+                    <input type="text" name="name" aria-label="Your name" class="w-full rounded-lg p-4 alt-bg"
+                        placeholder="Name" v-model="form.name" required>
                 </div>
 
                 <!-- email -->
                 <div class="">
-                    <input type="email" name="email" aria-label="Your email address" class="w-full rounded-lg p-4 alt-bg" placeholder="Email"
-                        v-model="form.email" required>
+                    <input type="email" name="email" aria-label="Your email address"
+                        class="w-full rounded-lg p-4 alt-bg" placeholder="Email" v-model="form.email" required>
                 </div>
 
                 <!-- message -->
                 <div class="">
-                    <textarea rows="5" name="message" aria-label="Your message" class="w-full rounded-lg p-4 alt-bg" v-model="form.message"
-                        required placeholder="Message"></textarea>
+                    <textarea rows="5" name="message" aria-label="Your message" class="w-full rounded-lg p-4 alt-bg"
+                        v-model="form.message" required placeholder="Message"></textarea>
                 </div>
 
                 <!-- submit -->
@@ -25,7 +25,8 @@
                     <button type="submit" :disabled="status === 'sending'"
                         class="text-white w-full rounded-lg p-4 transition-colors cursor-pointer disabled:cursor-wait"
                         :class="[status === 'success' ? 'bg-green-600' : status === 'error' ? 'bg-red-500' : 'bg-primary hover:bg-primary/80']">
-                        {{ result }} <Icon v-if="status === 'idle'" name="hugeicons:mail-send-01" class="ml-1 inline-block" />
+                        {{ result }}
+                        <Icon v-if="status === 'idle'" name="hugeicons:mail-send-01" class="ml-1 inline-block" />
                     </button>
                 </div>
                 <p v-if="feedback" class="text-sm app-text" role="status" aria-live="polite">{{ feedback }}</p>
@@ -35,7 +36,7 @@
             <div class="space-y-8 sm:space-y-14">
                 <!-- address -->
                 <div class="flex gap-4 items-center">
-                    <div class="  dark:bg-[#EAE6FE] bg-[#e5e0fa]  rounded-2xl p-4 flex items-center justify-center">
+                    <div class="contact-icon-tile rounded-2xl p-4 flex items-center justify-center">
                         <Icon name="material-symbols-light:location-on-outline" class="text-2xl text-primary"></Icon>
                     </div>
                     <div class="">
@@ -46,7 +47,7 @@
 
                 <!-- phone -->
                 <div class="flex gap-4 items-center">
-                    <div class="  dark:bg-[#EAE6FE] bg-[#e5e0fa]  rounded-2xl p-4 flex items-center justify-center">
+                    <div class="contact-icon-tile rounded-2xl p-4 flex items-center justify-center">
                         <Icon name="material-symbols-light:phone-in-talk-outline" class="text-2xl text-primary"></Icon>
                     </div>
                     <div class="">
@@ -59,7 +60,7 @@
 
                 <!-- email -->
                 <div class="flex gap-4 items-center">
-                    <div class="  dark:bg-[#EAE6FE] bg-[#e5e0fa]  rounded-2xl p-4 flex items-center justify-center">
+                    <div class="contact-icon-tile rounded-2xl p-4 flex items-center justify-center">
                         <Icon name="material-symbols-light:mail-outline" class="text-2xl text-primary"></Icon>
                     </div>
                     <div class="">
@@ -101,7 +102,7 @@ const submitForm = async () => {
         if (response.success) {
             status.value = 'success'
             result.value = 'Message sent'
-            feedback.value = 'Thanks for reaching out. I’ll get back to you soon.'
+            feedback.value = "Thanks for reaching out. I'll get back to you soon."
             form.value.name = ''
             form.value.email = ''
             form.value.message = ''
@@ -123,5 +124,21 @@ const submitForm = async () => {
     }, 5000)
 }
 </script>
+
+<style scoped>
+.contact-icon-tile {
+    background: rgb(126 116 241 / 10%);
+}
+
+.dark .contact-icon-tile {
+    background: rgb(126 116 241 / 18%);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+</style>
 
 <style lang="scss" scoped></style>

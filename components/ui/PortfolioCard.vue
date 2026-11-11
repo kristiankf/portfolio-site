@@ -64,7 +64,7 @@ const { content } = defineProps({
     display: block;
     overflow: hidden;
     aspect-ratio: 1.58;
-    background: #eeecf6;
+    background: var(--surface-visual);
 }
 
 .portfolio-card-image {
@@ -111,7 +111,7 @@ const { content } = defineProps({
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    color: #655ec5;
+    color: var(--text-accent);
     line-height: 1.1;
     text-align: right;
 }
@@ -124,7 +124,7 @@ const { content } = defineProps({
 .portfolio-card-metric span {
     max-width: 112px;
     margin-top: 4px;
-    color: #77748e;
+    color: var(--text-muted);
     font-size: 9px;
 }
 
@@ -133,7 +133,7 @@ const { content } = defineProps({
     gap: 7px;
     align-items: flex-start;
     margin-top: 12px;
-    color: #34304e;
+    color: var(--text-body);
     font-size: 12px;
     line-height: 1.5;
 }
@@ -148,7 +148,7 @@ const { content } = defineProps({
     border: 1px solid rgb(126 116 241 / 16%);
     border-radius: 999px;
     padding: 5px 9px;
-    color: #716d8a;
+    color: var(--text-muted);
     font-size: 10px;
     line-height: 1.2;
 }
@@ -158,6 +158,28 @@ const { content } = defineProps({
     .portfolio-card,
     .portfolio-card-image {
         transition: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .portfolio-card {
+        border-radius: 18px;
+    }
+
+    .portfolio-card-copy {
+        padding: 15px 16px 18px;
+    }
+
+    .portfolio-card-heading {
+        gap: 8px;
+    }
+
+    .portfolio-card-metric strong {
+        font-size: 18px;
+    }
+
+    .portfolio-card-tag {
+        padding: 5px 8px;
     }
 }
 </style>

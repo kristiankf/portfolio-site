@@ -2,7 +2,7 @@
     <div class="featured-projects">
         <div class="featured-projects-stack">
             <div v-for="(project, index) in projects" :key="project.id" class="featured-project-item alt-bg"
-                :style="{ '--stack-offset': `${index * 15}px`, zIndex: index + 1 }" v-reveal>
+                :style="{ '--stack-offset': `${index * 15}px`, '--mobile-stack-offset': `${index * 8}px`, zIndex: index + 1 }" v-reveal>
                 <article class="featured-project-card">
                     <div class="featured-project-visual">
                         <img :src="project.image" :alt="project.alt" loading="lazy" />

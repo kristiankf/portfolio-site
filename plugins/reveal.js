@@ -1,5 +1,9 @@
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.directive('reveal', {
+        getSSRProps() {
+            // Keep server-rendered content visible until the client animation is ready.
+            return {}
+        },
         mounted(element) {
             element.classList.add('reveal')
 

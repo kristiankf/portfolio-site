@@ -4,7 +4,7 @@
             <div class="footer-main">
                 <div>
                     <NuxtLink to="/" class="brand-wordmark footer-wordmark"><span>Kris</span><span class="brand-wordmark-accent">Ops</span></NuxtLink>
-                    <p class="mt-3 max-w-xs text-sm leading-6 text-white/55">Bespoke software built around the way you work.</p>
+                    <p class="mt-3 max-w-xs text-sm leading-6 text-white/75">Bespoke software built around the way you work.</p>
                 </div>
                 <nav class="footer-nav" aria-label="Footer navigation">
                     <NuxtLink v-for="link in links" :key="link.to" :to="link.to">{{ link.name }}</NuxtLink>
@@ -15,7 +15,7 @@
                     <a href="https://linkedin.com/in/christianamoakohene" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Icon name="hugeicons:linkedin-02" class="text-xl hover:text-primary transition-colors" /></a>
                 </div>
             </div>
-            <div class="mt-10 border-t border-white/10 pt-5 text-xs text-white/45">
+            <div class="mt-10 border-t border-white/10 pt-5 text-xs text-white/65">
                 © {{ date.getFullYear() }} KrisOps · Ghana
             </div>
         </div>

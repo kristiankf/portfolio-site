@@ -18,10 +18,10 @@
             <!-- theme and menu -->
             <div class="flex justify-between items-center gap-5">
                 <UiThemeIcon />
-                <!-- hamburgar -->
+                <!-- mobile menu -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" aria-label="Open navigation" @click="showMobileNav = true">
-                        <Icon name="hugeicons:hamburger-01" class="text-4xl cursor-pointer" />
+                    <button type="button" aria-label="Open navigation" class="mobile-menu-button" @click="showMobileNav = true">
+                        <Icon name="heroicons:bars-3" class="text-3xl cursor-pointer" />
                     </button>
                 </div>
             </div>

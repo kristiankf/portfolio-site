@@ -25,9 +25,10 @@
                 </div>
             </div>
         </div>
-        <div class="mx-auto">
-            <Carousel ref="carouselRef" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true" snapAlign="start"
-                :transition="500" v-model="currentSlide">
+        <div ref="carouselContainer" class="mx-auto" @mouseenter="isHovering = true" @mouseleave="isHovering = false"
+            @focusin="isFocused = true" @focusout="onFocusOut" @touchstart.passive="pauseAutoplay">
+            <Carousel ref="carouselRef" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true"
+                snapAlign="start" :transition="500" v-model="currentSlide">
                 <template #slides>
                     <Slide v-for="portfolio in projects" :key="portfolio?.id" class="">
                         <UiPortfolioCard :content="portfolio" />
@@ -54,7 +55,7 @@ const props = defineProps({
     },
     title: {
         type: String,
-        default: 'A few things I’ve helped bring to life.',
+        default: "A few things I've helped bring to life.",
     },
     linkTo: {
         type: String,
@@ -68,9 +69,16 @@ const emit = defineEmits(['currentSlide'])
 
 const currentSlide = ref(0)
 const carouselRef = ref(null)
+const isHovering = ref(false)
+const isFocused = ref(false)
+const isCarouselVisible = ref(false)
+const carouselContainer = ref(null)
+let autoplayTimer
+let resumeTimer
+let visibilityObserver
 
 const settings = {
-    itemsToShow: 2,
+    itemsToShow: 1,
     snapAlign: 'start',
 }
 const breakpoints = {
@@ -88,8 +96,49 @@ const breakpoints = {
     },
 }
 
-const next = () => carouselRef.value?.next()
-const prev = () => carouselRef.value?.prev()
+const pauseAutoplay = () => {
+    isFocused.value = true
+    clearTimeout(resumeTimer)
+    resumeTimer = window.setTimeout(() => { isFocused.value = false }, 10000)
+}
+
+const onFocusOut = (event) => {
+    if (event.currentTarget.contains(event.relatedTarget)) return
+    clearTimeout(resumeTimer)
+    isFocused.value = false
+}
+
+const next = () => {
+    pauseAutoplay()
+    carouselRef.value?.next()
+}
+const prev = () => {
+    pauseAutoplay()
+    carouselRef.value?.prev()
+}
+
+onMounted(() => {
+    const isMobile = window.matchMedia('(max-width: 599px)').matches
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!isMobile || prefersReducedMotion) return
+
+    visibilityObserver = new IntersectionObserver(([entry]) => {
+        isCarouselVisible.value = entry.isIntersecting
+    }, { threshold: 0.2 })
+    if (carouselContainer.value) visibilityObserver.observe(carouselContainer.value)
+
+    autoplayTimer = window.setInterval(() => {
+        if (isCarouselVisible.value && !isHovering.value && !isFocused.value && document.visibilityState === 'visible') {
+            carouselRef.value?.next()
+        }
+    }, 3000)
+})
+
+onBeforeUnmount(() => {
+    clearInterval(autoplayTimer)
+    clearTimeout(resumeTimer)
+    visibilityObserver?.disconnect()
+})
 
 watch(currentSlide, () => {
     emit('currentSlide', currentSlide.value)
@@ -111,7 +160,8 @@ watch(currentSlide, () => {
 
 @media screen and (max-width: 600px) {
     .carousel__slide {
-        padding-inline: 5px;
+        padding-inline: 0;
+        padding-block: 8px;
     }
 }
 </style>
