@@ -4,30 +4,31 @@
             <form @submit.prevent="submitForm" class="mt-10 sm:mt-0 space-y-4 title-text w-full">
                 <!-- name -->
                 <div class="">
-                    <input type="text" class="w-full rounded-lg p-4 alt-bg" placeholder="Name" v-model="form.name"
+                    <input type="text" name="name" aria-label="Your name" class="w-full rounded-lg p-4 alt-bg" placeholder="Name" v-model="form.name"
                         required>
                 </div>
 
                 <!-- email -->
                 <div class="">
-                    <input type="email" name="" id="" class="w-full rounded-lg p-4 alt-bg" placeholder="Email"
+                    <input type="email" name="email" aria-label="Your email address" class="w-full rounded-lg p-4 alt-bg" placeholder="Email"
                         v-model="form.email" required>
                 </div>
 
                 <!-- message -->
                 <div class="">
-                    <textarea rows="5" name="" id="" class="w-full rounded-lg p-4 alt-bg" v-model="form.message"
+                    <textarea rows="5" name="message" aria-label="Your message" class="w-full rounded-lg p-4 alt-bg" v-model="form.message"
                         required placeholder="Message"></textarea>
                 </div>
 
                 <!-- submit -->
                 <div class="!mt-10">
-                    <button type="submit" :disabled="result === 'Please wait...'"
-                        class=" text-white w-full rounded-lg p-4 transition-colors cursor-pointer"
-                        :class="[status === 'success' ? 'bg-green-500 hover:bg-green-500' : status === 'error' ? 'bg-red-400 hover-bg-red-400' : 'bg-primary hover:bg-primary/80']">
-                        {{ result }}
+                    <button type="submit" :disabled="status === 'sending'"
+                        class="text-white w-full rounded-lg p-4 transition-colors cursor-pointer disabled:cursor-wait"
+                        :class="[status === 'success' ? 'bg-green-600' : status === 'error' ? 'bg-red-500' : 'bg-primary hover:bg-primary/80']">
+                        {{ result }} <Icon v-if="status === 'idle'" name="hugeicons:mail-send-01" class="ml-1 inline-block" />
                     </button>
                 </div>
+                <p v-if="feedback" class="text-sm app-text" role="status" aria-live="polite">{{ feedback }}</p>
             </form>
         </div>
         <div class="sm:w-1/2">
@@ -76,46 +77,51 @@
 const config = useRuntimeConfig()
 const form = ref({
     access_key: config.public.web3formsAccessKey,
-    subject: "New Message from Kriswale.com",
-    name: "",
-    email: "",
-    message: "",
-});
+    subject: "New Message from KrisOps",
+    name: '',
+    email: '',
+    message: '',
+})
 const result = ref('Send Message')
-const status = ref('info')
+const status = ref('idle')
+const feedback = ref('')
 
 const submitForm = async () => {
-    result.value = "Please wait...";
+    status.value = 'sending'
+    result.value = 'Please wait...'
+    feedback.value = ''
+
     try {
         const response = await $fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: form.value,
-        });
+        })
 
-        // console.log(response); // You can remove this line if you don't need it
-
-        result.value = response.message;
-        if (response.success) status.value = 'success';
-
-    } catch (error) {
-        // console.log(error); // Log for debugging, can be removed
-        status.value = "error";
-        result.value = "Something went wrong!";
-    } finally {
-        // Reset form after submission
-        form.value.name = "";
-        form.value.email = "";
-        form.value.message = "";
-
-        // Clear result and status after 5 seconds
-        setTimeout(() => {
-            result.value = "Send Message";
-            status.value = "info";
-        }, 5000);
+        if (response.success) {
+            status.value = 'success'
+            result.value = 'Message sent'
+            feedback.value = 'Thanks for reaching out. I’ll get back to you soon.'
+            form.value.name = ''
+            form.value.email = ''
+            form.value.message = ''
+        } else {
+            status.value = 'error'
+            result.value = 'Try again'
+            feedback.value = response.message || 'Your message could not be sent. Please try again.'
+        }
+    } catch {
+        status.value = 'error'
+        result.value = 'Try again'
+        feedback.value = 'Something went wrong. Please try again or email me directly.'
     }
-};
 
+    window.setTimeout(() => {
+        status.value = 'idle'
+        result.value = 'Send Message'
+        feedback.value = ''
+    }, 5000)
+}
 </script>
 
 <style lang="scss" scoped></style>

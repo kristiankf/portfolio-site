@@ -13,12 +13,15 @@
                 <div class="overflow-x-scroll w-full pb-4">
                     <ul class="md:space-y-2 title-text flex md:block gap-1 w-full">
                         <template v-for="experience in experience" :key="experience.id">
-                            <li class="text-sm md:text-base py-2 md:py-3 px-3 md:px-5 flex shrink-0 justify-between items-center rounded-md hover:alt-bg cursor-pointer"
-                                @click="selected = experience.company_name"
-                                :class="{ 'text-primary alt-bg': selected === experience.company_name }">
-                                <span class="">{{ experience.company_name }}</span>
-                                <Icon name="heroicons:chevron-right" v-if="selected === experience.company_name"
-                                    class="hidden md:block" />
+                            <li class="shrink-0">
+                                <button type="button" class="text-left text-sm md:text-base py-2 md:py-3 px-3 md:px-5 w-full flex justify-between items-center rounded-md hover:alt-bg transition-colors"
+                                    @click="selected = experience.company_name"
+                                    :class="{ 'text-primary alt-bg': selected === experience.company_name }"
+                                    :aria-pressed="selected === experience.company_name">
+                                    <span>{{ experience.display_name || experience.company_name }}</span>
+                                    <Icon name="heroicons:chevron-right" v-if="selected === experience.company_name"
+                                        class="hidden md:block" />
+                                </button>
                             </li>
                         </template>
                     </ul>
@@ -34,7 +37,7 @@
                         :class="[selectedCareer?.link ? 'underline' : 'cursor-default pointer-events-none']">{{
                             selectedCareer?.company_name }}</a></p>
                 <p class="">{{ selectedCareer.location }}</p>
-                <p class="my-5 font-medium">{{ formatDate(selectedCareer?.start_date) }} · Full-time</p>
+                <p class="my-5 font-medium">{{ formatDate(selectedCareer?.start_date) }} · {{ selectedCareer?.employment_type }}</p>
                 <div class="flex gap-2 text-xs flex-wrap">
                     <template v-for="tech in selectedCareer?.skills" :key="tech.id">
                         <span class="border theme-border px-2 py-0.5 rounded-[4px]">

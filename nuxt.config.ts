@@ -14,20 +14,26 @@ export default defineNuxtConfig({
     port: 8080,
   },
 
+  runtimeConfig: {
+    public: {
+      web3formsAccessKey: process.env.NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+    },
+  },
+
   // App meta
   app: {
     head: {
-      title: "Kris Wale - Software Engineer",
+      title: "KrisOps | Bespoke Software Solutions",
       meta: [
         {
           name: "description",
           content:
-            "Software engineer with an expertise in full stack development, specializing in building scalable and efficient web applications.",
+            "Bespoke software and workflow solutions designed around how your business works. Based in Ghana, working worldwide.",
         },
         {
           name: "keywords",
           content:
-            "Full Stack, Web Development, Software Engineering, React, Vue, Javascript, Django, Python, MongoDB, MySQL, PostgreSQL, Docker, Kubernetes, AWS, Azure, GCP",
+            "Bespoke software, workflow solutions, process automation, custom platforms, full stack development, Ghana, Christian Amoakohene",
         },
       ],
       link: [
@@ -46,13 +52,6 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap",
         },
       ],
-    },
-  },
-
-  runtimeConfig: {
-    public: {
-      web3formsAccessKey: process.env.NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
     },
   },
 });

@@ -2,26 +2,32 @@
     <div class="maximum-width">
         <div class="flex justify-between items-end sm:items-center gap-5 mb-10">
             <div class="">
-                <UiSexyTitle>my works</UiSexyTitle>
-                <h2 class="title-style mt-4">Featured Portfolios</h2>
+                <UiSexyTitle>{{ props.eyebrow }}</UiSexyTitle>
+                <h2 class="title-style mt-4 text-3xl sm:text-4xl">{{ props.title }}</h2>
             </div>
 
             <!-- controls -->
-            <div class="flex gap-2">
-                <button @click="prev"
-                    class="  dark:bg-[#EAE6FE] bg-[#d7d0fa] hover:scale-110 transition-transform rounded-2xl p-3 flex items-center justify-center">
-                    <Icon name="heroicons:chevron-left" class="text-xl text-primary"></Icon>
-                </button>
-                <button @click="next"
-                    class="  dark:bg-[#EAE6FE] bg-[#d7d0fa] hover:scale-110 transition-transform rounded-2xl p-3 flex items-center justify-center">
-                    <Icon name="heroicons:chevron-right" class="text-xl text-primary"></Icon>
-                </button>
+            <div class="">
+                <NuxtLink v-if="props.linkTo" :to="props.linkTo"
+                    class="mr-2 block mb-3 self-center text-sm font-semibold text-primary hover:underline">See all work
+                    <Icon name="hugeicons:arrow-up-right-01" />
+                </NuxtLink>
+                <div class="flex gap-2">
+                    <button @click="prev" aria-label="Previous projects"
+                        class="  dark:bg-[#EAE6FE] bg-[#d7d0fa] hover:scale-110 transition-transform rounded-2xl p-3 flex items-center justify-center">
+                        <Icon name="heroicons:chevron-left" class="text-xl text-primary"></Icon>
+                    </button>
+                    <button @click="next" aria-label="Next projects"
+                        class="  dark:bg-[#EAE6FE] bg-[#d7d0fa] hover:scale-110 transition-transform rounded-2xl p-3 flex items-center justify-center">
+                        <Icon name="heroicons:chevron-right" class="text-xl text-primary"></Icon>
+                    </button>
 
+                </div>
             </div>
         </div>
         <div class="mx-auto">
-            <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true" snapAlign="start"
-                :transition="500" :autoplay="3000" :pauseAutoplayOnHover="true" v-model="currentSlide">
+            <Carousel ref="carouselRef" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true" snapAlign="start"
+                :transition="500" v-model="currentSlide">
                 <template #slides>
                     <Slide v-for="portfolio in projects" :key="portfolio?.id" class="">
                         <UiPortfolioCard :content="portfolio" />
@@ -42,23 +48,26 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    eyebrow: {
+        type: String,
+        default: 'SELECTED WORK',
+    },
+    title: {
+        type: String,
+        default: 'A few things I’ve helped bring to life.',
+    },
+    linkTo: {
+        type: String,
+        default: undefined,
+    },
 })
 
 // console.log(props.projects)
 
-const portfolioData = [
-    { name: 'Nnuro', image: '/images/portfolio/nnuro.png', link: 'https://nnuro.com/', techStack: 'Vue' },
-    { name: 'Modern Auto Motors', image: '/images/portfolio/mam.png', link: 'https://mam.co.bw/', techStack: 'Nuxt' },
-    { name: 'Bibiaa', image: '/images/portfolio/bibiaa.png', link: 'https://bibiaaonline.com/', techStack: 'Next' },
-    { name: 'Litt Digital Academy', image: '/images/portfolio/lda.png', link: 'https://littdigitalacademy.org/', techStack: 'Nuxt' },
-    { name: 'GhCompare', image: '/images/portfolio/ghcompare.png', link: 'https://ghcompare.com/', techStack: 'Vue' },
-    { name: 'Product Growth Institute', image: '/images/portfolio/pgi.png', link: 'https://www.productgrowthinstitute.org/', techStack: 'Nuxt' },
-    { name: 'Skuldent', image: '/images/portfolio/skuldent.png', link: 'https://skuldent.netlify.app/', techStack: 'Nuxt' },
-]
-
 const emit = defineEmits(['currentSlide'])
 
 const currentSlide = ref(0)
+const carouselRef = ref(null)
 
 const settings = {
     itemsToShow: 2,
@@ -79,12 +88,8 @@ const breakpoints = {
     },
 }
 
-const next = () => {
-    currentSlide.value > portfolioData?.length - 1 ? currentSlide.value = 0 : currentSlide.value = currentSlide.value + 1
-}
-const prev = () => {
-    currentSlide.value < 0 ? currentSlide.value = portfolioData?.length - 1 : currentSlide.value = currentSlide.value - 1
-}
+const next = () => carouselRef.value?.next()
+const prev = () => carouselRef.value?.prev()
 
 watch(currentSlide, () => {
     emit('currentSlide', currentSlide.value)

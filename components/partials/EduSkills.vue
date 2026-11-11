@@ -1,58 +1,67 @@
 <template>
     <div class="maximum-width">
-        <UiSexyTitle>
-            learning path
-        </UiSexyTitle>
+        <div class="toolkit-intro" v-reveal>
+            <UiSexyTitle>THE TOOLKIT</UiSexyTitle>
+            <h2 class="title-style mt-4 text-3xl sm:text-4xl">A practical stack for building and running software.</h2>
+            <p class="mt-4 max-w-2xl leading-7 app-text">I choose tools to fit the workflow and the people using the product—from the first idea through launch and ongoing operations.</p>
+        </div>
 
-        <h2 class="title-style mt-4">Education & Skills</h2>
+        <div class="toolkit-layout mt-10 md:mt-14">
+            <aside class="toolkit-education" v-reveal>
+                <div class="toolkit-section-heading">
+                    <span class="toolkit-heading-icon"><Icon name="hugeicons:book-open-01" /></span>
+                    <div>
+                        <p class="eyebrow">FOUNDATION</p>
+                        <h3 class="mt-1 font-jakarta text-xl font-semibold title-text">Education & credentials</h3>
+                    </div>
+                </div>
 
-        <div class="mt-10 md:mt-20 flex flex-col sm:flex-row gap-5 lg:gap-20 ">
-            <div class="sm:w-[500px]">
-                <template v-for="(item, index) in education" :key="item.id">
-                    <div class="flex gap-4">
-                        <div class="line flex flex-col items-center">
-                            <div class="size-[14px] shrink-0 dark:bg-light bg-dark rounded-full"></div>
-                            <div v-if="index !== education.length - 1" class="w-[2px] h-full dark:bg-light bg-dark">
-                            </div>
+                <div class="toolkit-education-list">
+                    <article v-for="(item, index) in education" :key="item.id" class="toolkit-education-item">
+                        <span class="toolkit-timeline-dot" :class="{ 'toolkit-timeline-dot-last': index === education.length - 1 }"></span>
+                        <div>
+                            <p class="font-semibold title-text">{{ item?.institution }}</p>
+                            <p class="mt-1 text-sm leading-6 app-text">
+                                <span v-if="item?.degree">{{ item.degree }} · </span>{{ item?.program }}
+                            </p>
+                            <p class="mt-2 text-xs app-text">{{ formatDate(item?.date_started) }}{{ item?.date_completed ? ` – ${formatDate(item.date_completed)}` : '' }}</p>
                         </div>
-                        <div class="edu pb-10">
-                            <p class="title-text font-bold">{{ item?.institution }}</p>
-                            <p class="text-sm mb-4 mt-1"><span v-if="item?.degree">{{ item?.degree }} - </span>{{
-                                item?.program }}</p>
-                            <p class="text-sm">{{ formatDate(item?.date_started) }}{{ item?.date_completed ? ` -
-                                ${formatDate(item?.date_completed)}` : '' }}</p>
+                    </article>
+                </div>
+            </aside>
+
+            <div class="toolkit-groups">
+                <article
+                    v-for="(group, index) in groups"
+                    :key="group.id"
+                    class="toolkit-group-card"
+                    v-reveal
+                    :style="{ '--reveal-delay': `${index * 70}ms` }"
+                >
+                    <header class="toolkit-group-heading">
+                        <span class="toolkit-heading-icon"><Icon :name="group.icon" /></span>
+                        <div>
+                            <h3 class="font-jakarta text-lg font-semibold title-text">{{ group.title }}</h3>
+                            <p class="mt-1 text-xs leading-5 app-text">{{ group.description }}</p>
+                        </div>
+                        <span class="toolkit-count">{{ group.skills.length }}</span>
+                    </header>
+
+                    <div class="toolkit-skill-grid">
+                        <div v-for="item in group.skills" :key="item.id" class="toolkit-skill-tile">
+                            <span class="toolkit-skill-icon"><Icon :name="item.icon_name" /></span>
+                            <span>{{ item.name }}</span>
                         </div>
                     </div>
-                </template>
-
-            </div>
-            <div class="sm:w-[600px]">
-                <p class="leading-8">
-                    For {{ yearsOfExperience() }}+ years, I have been continuously practicing and building in the field
-                    of full
-                    stack development
-                    and experimenting with new
-                    technologies and frameworks, and here you can see a summary of my skills.
-                </p>
-
-                <!-- skills -->
-                <div class="flex flex-wrap gap-2 md:gap-4 mt-5 md:mt-10">
-                    <template v-for="item in skills" :key="item?.name">
-                        <div class="flex  border theme-border p-3 px-4 rounded-full items-center gap-2">
-                            <Icon :name="item.icon_name" class="text-xl" /> <span class="text-sm font-semibold">{{
-                                item?.name
-                            }}</span>
-                        </div>
-                    </template>
-                </div>
+                </article>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
-    skills: {
+defineProps({
+    groups: {
         type: Array,
         required: true,
     },
@@ -61,28 +70,4 @@ const props = defineProps({
         required: true,
     },
 })
-
-// console.log(props.skills)
-// console.log(props.education)
-
-// const skills = [
-//     { skill: "Tailwind CSS", logo: "logos:tailwindcss-icon" },
-//     { skill: "TypeScript", logo: "logos:typescript-icon" },
-//     { skill: "Vue JS", logo: "logos:vue" },
-//     { skill: "React JS", logo: "logos:react" },
-//     { skill: "Angular", logo: "logos:angular-icon" },
-//     { skill: "Nuxt", logo: "logos:nuxt-icon" },
-//     { skill: "Next JS", logo: "logos:nextjs-icon" },
-//     { skill: "GIT", logo: "logos:git-icon" },
-//     { skill: "NPM", logo: "logos:npm" },
-//     { skill: "Search Engine Optimization", logo: "tabler:seo" },
-//     { skill: "HTML", logo: "logos:html-5" },
-//     { skill: "CSS", logo: "logos:css-3" },
-//     { skill: "JavaScript", logo: "logos:javascript" },
-//     { skill: "Python", logo: "logos:python" },
-//     { skill: "Django", logo: "logos:django" },
-//     { skill: "Django Rest Framework", logo: "devicon-plain:djangorest" },
-// ]
 </script>
-
-<style lang="scss" scoped></style>
