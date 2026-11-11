@@ -17,25 +17,16 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       web3formsAccessKey: process.env.NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://krisops.netlify.app",
     },
   },
 
   // App meta
   app: {
     head: {
-      title: "KrisOps | Bespoke Software Solutions",
-      meta: [
-        {
-          name: "description",
-          content:
-            "Bespoke software and workflow solutions designed around how your business works. Based in Ghana, working worldwide.",
-        },
-        {
-          name: "keywords",
-          content:
-            "Bespoke software, workflow solutions, process automation, custom platforms, full stack development, Ghana, Christian Amoakohene",
-        },
-      ],
+      title: "KrisOps | Bespoke Workflow Software",
+      htmlAttrs: { lang: "en" },
+      meta: [{ name: "description", content: "Bespoke software that connects business tools, simplifies manual work, and fits the way your team operates. Based in Ghana, working worldwide." }],
       link: [
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {

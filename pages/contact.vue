@@ -15,8 +15,9 @@
 </template>
 
 <script setup>
-useSeoMeta({
-    title: 'Contact | KrisOps',
-    description: 'Start a conversation about a workflow, product, or process you would like to make easier.',
+usePageSeo({
+    title: 'Discuss Your Business Workflow | KrisOps',
+    description: 'Talk with Christian Amoakohene about scattered apps, manual tasks, or a business process you want bespoke software to make easier.',
+    path: '/contact',
 })
 </script>

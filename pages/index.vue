@@ -80,9 +80,27 @@
 <script setup>
 import { featuredProjects, projects } from '~/data/portfolio'
 
-useSeoMeta({
-    title: 'KrisOps | AI-Powered Workflow Software Solutions',
-    description: 'Bespoke AI-assisted software for small and medium-sized businesses. Connect scattered apps, simplify manual work, and build around your operations.',
+const { canonicalUrl } = usePageSeo({
+    title: 'Bespoke Workflow Software for Growing Businesses | KrisOps',
+    description: 'KrisOps helps small and medium-sized businesses replace scattered apps and manual processes with bespoke software built around their workflows. Based in Ghana, working worldwide.',
+    path: '/',
+})
+
+const siteUrl = useRuntimeConfig().public.siteUrl.replace(/\/$/, '')
+useHead({
+    script: [{
+        key: 'website-structured-data',
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'KrisOps',
+            url: canonicalUrl,
+            description: 'Bespoke workflow software and solutions for growing businesses.',
+            inLanguage: 'en',
+            publisher: { '@type': 'Person', name: 'Christian Amoakohene', url: `${siteUrl}/about` },
+        }),
+    }],
 })
 
 const homeProjects = projects.slice(0, 5)

@@ -53,8 +53,9 @@
 <script setup>
 import { featuredProjects, projects } from '~/data/portfolio'
 
-useSeoMeta({
-    title: 'Solutions | KrisOps',
-    description: 'Workflow-first bespoke software for small and medium-sized businesses. See case studies in operations, e-commerce, and AI-assisted software.',
+usePageSeo({
+    title: 'Custom Business Software & Workflow Automation | KrisOps',
+    description: 'Workflow analysis, AI-assisted development, and custom software for small and medium-sized businesses. Connect tools, reduce manual work, and build systems that fit.',
+    path: '/solutions',
 })
 </script>
